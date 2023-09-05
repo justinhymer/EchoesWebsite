@@ -47,7 +47,7 @@ function clearConsole() {
 
 // Function to display available commands
 function displayCommands() {
-    output("Available Commands:");
+    output("\nAvailable Commands:");
     // List your commands here
     output("ls : show directory");
     output("cd : change directory" );
