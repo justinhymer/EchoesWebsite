@@ -1,5 +1,6 @@
 const outputElement = document.getElementById('output');
 const inputElement = document.getElementById('input');
+displayWelcome();
 
 // Command handler
 function handleCommand(input) {
@@ -45,17 +46,32 @@ function clearConsole() {
     outputElement.textContent = '';
 }
 
+function displayWelcome() {
+    output("Echoes of Despair terminal")
+    output("type help for list of commands and directories")
+}
+
 // Function to display available commands
 function displayCommands() {
     output("\nAvailable Commands:");
     // List your commands here
-    output("ls : show directory");
-    output("cd : change directory" );
-    output("help:show commands")
+    output("ls   : show directory");
+    output("cd   : change directory" );
+    output("pwd  : show the present directory")
+    output("help : show commands");
     //3. Concept Art\n4. Help\n5. Contact\n6. Clear");
     output("\n");
     output("Available Directories:");
     output("info\ncredits\nconcept_art\ncontact")
+}
+
+function displayTitle() {
+    output("|       |       |  | |  |       |       |       | |       |       | |      ||       |       |       |   _   |   |    _ |  ");
+    output("|    ___|       |  |_|  |   _   |    ___|  _____| |   _   |    ___| |  _    |    ___|  _____|    _  |  |_|  |   |   | ||  ");
+    output("|   |___|       |       |  | |  |   |___| |_____  |  | |  |   |___  | | |   |   |___| |_____|   |_| |       |   |   |_||_ ");
+    output("|    ___|      _|       |  |_|  |    ___|_____  | |  |_|  |    ___| | |_|   |    ___|_____  |    ___|       |   |    __  |");
+    output("|   |___|     |_|   _   |       |   |___ _____| | |       |   |     |       |   |___ _____| |   |   |   _   |   |   |  | |");
+    output("|_______|_______|__| |__|_______|_______|_______| |_______|___|     |______||_______|_______|___|   |__| |__|___|___|  |_|");
 }
 
 // Function to collect email information
