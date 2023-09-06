@@ -26,6 +26,7 @@ pre {
     margin: 0;
     padding: 10px;
     overflow-y: hidden; /* Hide the vertical scrollbar */
+    overflow-x: hidden; /* Hide the horizontal scrollbar */
 }
 
 .prompt {
