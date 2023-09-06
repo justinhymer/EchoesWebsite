@@ -1,6 +1,6 @@
 body {
     background-color: #000;
-    color: #00ff00; /* Green text, adjust as needed */
+    color: white; /* Green text, adjust as needed */
     font-family: 'Lucida Console', 'Consolas', monospace;
     margin: 0;
     overflow: hidden;
@@ -12,9 +12,8 @@ body {
 
 .console {
     background-color: #000;
-    border: 5px solid #009900; /* Green border, adjust as needed */
+    border: 5px solid white; /* Green border, adjust as needed */
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2); /* Green shadow, adjust as needed */
     width: 90%;
     max-width: 800px;
     height: 80%;
@@ -31,14 +30,14 @@ pre {
 
 .prompt {
     background-color: #000;
-    color: #00ff00;
+    color: white;
     padding: 5px;
 }
 
 input {
     background-color: #000;
-    color: #00ff00;
-    border: 2px solid #00ff00; /* Add a green border around the input */
+    color: white;
+    border: 2px solid white; /* Add a green border around the input */
     outline: none;
     padding: 5px;
 }

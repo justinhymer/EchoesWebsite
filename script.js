@@ -8,8 +8,11 @@ function handleCommand(input) {
     switch (command) {
         case 'info':
             // Display game synopsis
-            output("Echoes of Despair is a retro styled survival horror game that demands strategic teamwork as players navigate a cursed mansion.");
-            output("With each player controlling a unique character, you collaborate and combine your distinct abilities to uncover the mansion's sinister past, confront otherworldly threats, and break free from the cycle of terror");
+            output("Echoes of Despair is a retro styled survival horror game that demands strategic teamwork");
+            output("as players navigate a cursed mansion.");
+            output("With each player controlling a unique character,");
+            output("you collaborate and combine your distinct abilities to uncover the mansion's sinister past,");
+            output("confront otherworldly threats, and break free from the cycle of terror");
             break;
         case 'credits':
             // Display game credits

@@ -10,6 +10,7 @@ TODO:
     - For example, "cd help" or "help cd" would show how to use the cd command
 - same for "ls"
 - program "pwd" functionality
+- Have in the user input box "C:\>" to mimic command line
 - Code in directory structure
     - If on "this" page, then show "these" files/folders if user types "ls" in that directory
     - Directory Structure
