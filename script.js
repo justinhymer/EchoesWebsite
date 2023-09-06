@@ -8,11 +8,24 @@ function handleCommand(input) {
     switch (command) {
         case 'info':
             // Display game synopsis
-            output("This is the game synopsis.");
+            output("Echoes of Despair is a retro styled survival horror game that demands strategic teamwork as players navigate a cursed mansion.");
+            output("With each player controlling a unique character, you collaborate and combine your distinct abilities to uncover the mansion's sinister past, confront otherworldly threats, and break free from the cycle of terror");
             break;
         case 'credits':
             // Display game credits
-            output("Game credits go here.");
+            output("Director                   : Justin Hymer");
+            output("Lead Programmer            : Justin Hymer");
+            output("3D Designer                : Justin Hymer");
+            output("Monster Voice Actor        : Justin Hymer");
+            output("Producer                   : Jake Boerner")
+            output("Assistant Programmer       : Kyle Noll")
+            output("Website developer          : Andrew Moody");
+            output("Original music             : Trace Davidson");
+            output("Concept Art                : Brian Hymer");
+            output("Boss Voice Actor           : Brian Hymer");
+            output("Female Voice Actor         : Makayla Fowler");
+            output("Synthesizer Specialist     : Jack P")
+            output("Playtesters                : Makayla Fowler, Jack P, RJ Lorenz, Nick Lind, Brandon Ellis")
             break;
         case 'concept art':
             // Display ASCII art
@@ -55,16 +68,18 @@ function displayWelcome() {
 function displayCommands() {
     output("\nAvailable Commands:");
     // List your commands here
-    output("ls   : show directory");
-    output("cd   : change directory" );
-    output("pwd  : show the present directory")
-    output("help : show commands");
-    //3. Concept Art\n4. Help\n5. Contact\n6. Clear");
+    output("ls             : show directory");
+    output("cd             : change directory" );
+    output("pwd            : show the present directory")
+    output("help           : show commands");
+    output("{command} help : Shows help for a specific command")
+    output("clear          : clears the screen")
     output("\n");
     output("Available Directories:");
     output("info\ncredits\nconcept_art\ncontact")
 }
 
+// This currently doesn't fit correctly on my screen so may need to be redone and made smaller
 function displayTitle() {
     output("|       |       |  | |  |       |       |       | |       |       | |      ||       |       |       |   _   |   |    _ |  ");
     output("|    ___|       |  |_|  |   _   |    ___|  _____| |   _   |    ___| |  _    |    ___|  _____|    _  |  |_|  |   |   | ||  ");
@@ -82,6 +97,8 @@ function collectEmailInfo() {
 // Function to display concept art (modify as needed)
 function displayConceptArt() {
     // Implement ASCII art display logic here
+    // todo: have it just display an image that takes up the entire console
+    // if user presses any key while on this page, take back to console with same content as before
 }
 
 // Event listener for user input
