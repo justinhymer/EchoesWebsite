@@ -16,8 +16,4 @@ router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./index.html"));
 });
 
-router.get("/info", (req, res) => {
-  res.sendFile(path.join(__dirname, "./info.html"));
-});
-
 app.listen(PORT, () => console.log(`App is live on port ${PORT}!`));
