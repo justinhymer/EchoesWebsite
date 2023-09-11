@@ -10,6 +10,25 @@ body {
   height: 100vh;
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari -- Hide the vertical scrollbar */
+}
+
+pre {
+  flex: 1;
+  margin: 0;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  scrollbar-width: none; /* Firefox -- Hide the vertical scrollbar */
+  -ms-overflow-style: none; /* Edge/IE -- Hide the vertical scrollbar */
+}
+
 .console {
   background-color: #000;
   border: 5px solid white; /* Green border, adjust as needed */
@@ -21,26 +40,33 @@ body {
   flex-direction: column;
 }
 
-pre {
-  flex: 1;
-  margin: 0;
-  padding: 10px;
-  overflow-y: hidden; /* Hide the vertical scrollbar */
-  overflow-x: hidden; /* Hide the horizontal scrollbar */
-}
-
 .prompt {
   background-color: #000;
   color: white;
   padding: 5px;
 }
 
+.userInput {
+  display: flex;
+  flex-direction: row;
+  background-color: #000;
+  color: white;
+  border: 2px solid white;
+  outline: none;
+  padding: 5px;
+}
+
 input {
   background-color: #000;
   color: white;
-  border: 2px solid white; /* Add a green border around the input */
+  border: none; /* Add a green border around the input */
   outline: none;
   padding: 5px;
+}
+
+#output {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Mobile View */
@@ -53,6 +79,11 @@ input {
   height: 80%;
   display: flex;
   flex-direction: column;
+}
+
+#mobileOutput {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* MEDIA QUERIES */
