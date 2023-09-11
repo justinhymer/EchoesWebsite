@@ -2,57 +2,83 @@ const outputElement = document.getElementById("output");
 const inputElement = document.getElementById("input");
 const mobileOutputEl = document.getElementById("mobileOutput");
 const mobileInputEl = document.getElementById("mobileInput");
+const workingDirectory = document.getElementsByClassName("directory");
+const root = `C:\\`;
 
 displayWelcome();
 mobileWelcome();
 
-// Command handler
-function handleCommand(input) {
+// Directory Command handler -- WRITE LOGIC TO CHECK DIRECTORY BEFORE EXECUTING A COMMAND
+function directoryHandler() {
   const command = input.trim().toLowerCase();
   switch (command) {
     case "info":
       // Display game synopsis
-      output(
-        "Echoes of Despair is a retro styled survival horror game that demands strategic teamwork"
-      );
-      output("as players navigate a cursed mansion.");
-      output("With each player controlling a unique character,");
-      output(
-        "you collaborate and combine your distinct abilities to uncover the mansion's sinister past,"
-      );
-      output(
-        "confront otherworldly threats, and break free from the cycle of terror"
-      );
-      break;
+      
+        output("");
+        output(
+          "Echoes of Despair is a retro styled survival horror game that demands strategic teamwork"
+        );
+        output("as players navigate a cursed mansion.");
+        output("");
+        output("With each player controlling a unique character,");
+        output(
+          "you collaborate and combine your distinct abilities to uncover the mansion's sinister past,"
+        );
+        output(
+          "confront otherworldly threats, and break free from the cycle of terror."
+        );
+        break;
     case "credits":
       // Display game credits
-      output("Director                   : Justin Hymer");
-      output("Lead Programmer            : Justin Hymer");
-      output("3D Designer                : Justin Hymer");
-      output("Monster Voice Actor        : Justin Hymer");
-      output("Producer                   : Jake Boerner");
-      output("Assistant Programmer       : Kyle Noll");
-      output("Website developer          : Andrew Moody");
-      output("Original music             : Trace Davidson");
-      output("Concept Art                : Brian Hymer");
-      output("Boss Voice Actor           : Brian Hymer");
-      output("Female Voice Actor         : Makayla Fowler");
-      output("Synthesizer Specialist     : Jack P");
+      // Added spaces between lines for "easier to read" text. Helpful when outputting large amounts of text. -- Moody
+      output("");
+      output("Director                : Justin Hymer");
+      output("");
+      output("Lead Programm           : Justin Hymer");
+      output("");
+      output("3D Designer             : Justin Hymer");
+      output("");
+      output("Monster Voice Actor     : Justin Hymer");
+      output("");
+      output("Producer                : Jake Boerner");
+      output("");
+      output("Assistant Programmer    : Kyle Noll");
+      output("");
+      output("Website developer       : Andrew Moody");
+      output("");
+      output("Original music          : Trace Davidson");
+      output("");
+      output("Concept Art             : Brian Hymer");
+      output("");
+      output("Boss Voice Actor        : Brian Hymer");
+      output("");
+      output("Female Voice Actor      : Makayla Fowler");
+      output("");
+      output("Synthesizer Specialis   : Jack P");
+      output("");
       output(
-        "Playtesters                : Makayla Fowler, Jack P, RJ Lorenz, Nick Lind, Brandon Ellis"
+        "Playtesters             : Makayla Fowler, Jack P, RJ Lorenz, Nick Lind, and Brandon Ellis"
       );
       break;
     case "concept art":
       // Display ASCII art
       displayConceptArt();
       break;
-    case "help":
-      // Display available commands
-      displayCommands();
-      break;
     case "contact":
       // Collect and send an email
       collectEmailInfo();
+      break;
+  }
+}
+
+// Command handler
+function handleCommand(input) {
+  const command = input.trim().toLowerCase();
+  switch (command) {
+    case "help":
+      // Display available commands
+      displayCommands();
       break;
     case "clear":
       // Clear the console
@@ -67,17 +93,52 @@ function handleCommand(input) {
         "Echoes of Despair is a retro styled survival horror game that demands strategic teamwork"
       );
       output("as players navigate a cursed mansion.");
+      output("");
       output("With each player controlling a unique character,");
       output(
         "you collaborate and combine your distinct abilities to uncover the mansion's sinister past,"
       );
       output(
-        "confront otherworldly threats, and break free from the cycle of terror"
+        "confront otherworldly threats, and break free from the cycle of terror."
       );
       break;
-
+    // Users can naviagte directories. Console directory updates accordingly -- Moody
+    case "cd info":
+      for (i = 0; i < workingDirectory.length; i++) {
+        workingDirectory[i].textContent = `${root}info >`;
+      }
+      output("");
+      output("in the info directory");
+      break;
+    case "cd credits":
+      for (i = 0; i < workingDirectory.length; i++) {
+        workingDirectory[i].textContent = `${root}credits >`;
+      }
+      output("");
+      output("in the credits directory");
+      break;
+    case "cd concept_art":
+      for (i = 0; i < workingDirectory.length; i++) {
+        workingDirectory[i].textContent = `${root}concept_art >`;
+      }
+      output("");
+      output("in the concept_art directory");
+      break;
+    case "cd contact":
+      for (i = 0; i < workingDirectory.length; i++) {
+        workingDirectory[i].textContent = `${root}contact >`;
+      }
+      output("");
+      output("in the contact directory");
+      break;
+    case "cd ..":
+      for (i = 0; i < workingDirectory.length; i++) {
+        workingDirectory[i].textContent = `${root}`;
+      }
+      break;
     default:
       // Invalid command
+      output("");
       output("Invalid command. Type 'help' for available commands.");
   }
 }
@@ -126,17 +187,15 @@ function displayCommands() {
   output("info\ncredits\nconcept_art\ncontact");
 }
 
-// This currently doesn't fit correctly on my screen so may need to be redone and made smaller
-// -----
 // this sizing fits onto an iPhone SE (375px wide). If they've got a mobile smaller than that, it might be time for a new phone. -- Moody
 function displayTitle() {
-  output(" ______ ______ _   _ _____ ______ ______");
-  output("|      |      | | | |     |      |      | ");
-  output("|   ___|      | |_| |  _  |    __|  ____| ");
-  output("|  |___|     _|     | | | |   |__| |____  ");
-  output("|   ___|    | |     | |_| |    __|_____ | ");
-  output("|  |___|    |_|  _  |     |   |__ ____| | ");
-  output("|______|______|_| |_|_____|______|______| ");
+  output(" ____ ____ _   _ _____ ____ _____");
+  output("|    |    | | | |     |    |     | ");
+  output("|  __|    | |_| |  _  |  __|  ___| ");
+  output("| |__|   _|     | | | | |__| |___  ");
+  output("|  __|  | |     | |_| |  __|____ | ");
+  output("| |__|  |_|  _  |     | |__ ___| | ");
+  output("|____|____|_| |_|_____|____|_____| ");
   output("");
   output(" _____ ______");
   output("|     |      | ");
@@ -146,13 +205,13 @@ function displayTitle() {
   output("|     |  |     ");
   output("|_____|__|    ");
   output("");
-  output(" ____  _____ _____ ______ _____ __ _____");
-  output("|    ||     |     |      |  _  |  |  _  |   ");
-  output("|  _  |  ___|  ___|   _  | |_| |  | | | |   ");
-  output("| | | | |___| |___|  |_| |     |  | |_| |_  ");
-  output("| |_| |  ___|____ |   ___|     |  |  __   | ");
-  output("|     | |___ ___| |  |   |  _  |  | |  |  | ");
-  output("|____||_____|_____|__|   |_| |_|__|_|  |__| ");
+  output(" ____  ____ _____ _____ _____ _ _____");
+  output("|    ||    |     |     |  _  | |  _  |   ");
+  output("|  _  |  __|  ___|  _  | |_| | | | | |   ");
+  output("| | | | |__| |___| |_| |     | | |_| |_  ");
+  output("| |_| |  __|____ |  ___|     | |  __   | ");
+  output("|     | |__ ___| | |   |  _  | | |  |  | ");
+  output("|____||____|_____|_|   |_| |_|_|_|  |__| ");
 }
 
 // Function to collect email information
@@ -171,7 +230,7 @@ function displayConceptArt() {
 inputElement.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     let inputText = inputElement.value;
-    output(">" + inputText);
+    output(">" + ` ${inputText}`);
     handleCommand(inputText);
     inputElement.value = "";
   }
@@ -180,7 +239,7 @@ inputElement.addEventListener("keydown", function (e) {
 mobileInputEl.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     let inputText = mobileInputEl.value;
-    output(">" + inputText);
+    output(">" + ` ${inputText}`);
     handleCommand(inputText);
     mobileInputEl.value = "";
   }
