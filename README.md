@@ -2,10 +2,7 @@ TODO:
 
 - Add animation to page so that text appears that it's being typed out at you
 - Make font bigger
-- Currently, if console text fills up the box, the user can't scroll down. Originally there was a scrollbar that I removed. That functionality was added in the CSS in the 'pre' block with overflow-y property. This may need to be changed, and just somehow hide the scrollbar a different way
 - Format the help pages to look more like standard help pages
-- Have user navigation need "cd" {directory} to go to different screens
-    - "cd .." takes user back one directory
 - program in {command} help screens for every specific command
     - For example, "cd help" or "help cd" would show how to use the cd command
 - same for "ls"
@@ -30,8 +27,6 @@ TODO:
                     - Justin Hymer
                     - justinhymer1@gmail.com
                     - Bloomington IL
-- Check if functional on mobile devices
-    - Not required to be, but may be nice if easy enough
 - code in functionality for "pwd" command
 - ARG
     - Create "login" command
