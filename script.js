@@ -187,7 +187,7 @@ function displayCommands() {
   output("info\ncredits\nconcept_art\ncontact");
 }
 
-// this sizing fits onto an iPhone SE (375px wide). If they've got a mobile smaller than that, it might be time for a new phone. -- Moody
+// this sizing fits onto an iPhone SE (375px wide). -- Moody
 function displayTitle() {
   output(" ____ ____ _   _ _____ ____ _____");
   output("|    |    | | | |     |    |     | ");
