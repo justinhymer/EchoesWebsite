@@ -29,6 +29,26 @@ pre {
   -ms-overflow-style: none; /* Edge/IE -- Hide the vertical scrollbar */
 }
 
+.pre {
+  margin: 0;
+  padding: 10px;
+  font-size: small;
+}
+
+/* p {
+  margin: 0;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+} */
+
 .console {
   background-color: #000;
   border: 5px solid white; /* Green border, adjust as needed */
@@ -38,15 +58,38 @@ pre {
   height: 80%;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  scrollbar-width: none; /* Firefox -- Hide the vertical scrollbar */
+  -ms-overflow-style: none; /* Edge/IE -- Hide the vertical scrollbar */
 }
 
-.prompt {
+/* .userInput {
+  display: flex;
+  flex-direction: row;
   background-color: #000;
   color: white;
+  border: 2px solid white;
+  outline: none;
+  padding: 5px;
+} */
+
+#inputContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #000;
+  color: white;
+  border: 2px solid white;
+  outline: none;
   padding: 5px;
 }
 
-.userInput {
+#mobileInputContainer {
   display: flex;
   flex-direction: row;
   background-color: #000;
@@ -79,6 +122,11 @@ input {
   height: 80%;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  word-wrap: break-word;
+  scrollbar-width: none; /* Firefox -- Hide the vertical scrollbar */
+  -ms-overflow-style: none; /* Edge/IE -- Hide the vertical scrollbar */
 }
 
 #mobileOutput {
@@ -101,4 +149,19 @@ input {
   .mobile {
     display: none;
   }
+}
+
+span {
+  flex: -1;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  animation: 
+    typing 3.5s steps(40, end),
+    /* blink-caret .75s step-end infinite; */
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
 }
