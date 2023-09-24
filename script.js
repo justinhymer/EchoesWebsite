@@ -6,13 +6,10 @@ const workingDirectory = document.getElementsByClassName("directory");
 const directoryContents =
   document.getElementsByClassName("directory").innerHTML;
 const root = `C:\\`;
-const info = `${root}info`;
+const info = `${root}info >`;
 const credits = `${root}credits >`;
 const concept_art = `${root}concept_art >`;
 const contact = `${root}contact >`;
-
-const consoleDiv = document.querySelector(".console");
-const mobile = document.querySelector(".mobile");
 
 let txt = null;
 let i = 0;
@@ -145,7 +142,7 @@ function handleCommand(input) {
       break;
     case "cd ..":
       for (i = 0; i < workingDirectory.length; i++) {
-        workingDirectory[i].textContent = `${root}`;
+        workingDirectory[i].textContent = `${root}>`;
       }
       break;
     default:
@@ -244,7 +241,7 @@ function displayConceptArt() {
 inputElement.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     let inputText = inputElement.value;
-    output(">" + ` ${inputText}`);
+    output(`${root}` + ` ${inputText}`);
     handleCommand(inputText);
     inputElement.value = "";
   }
@@ -253,7 +250,7 @@ inputElement.addEventListener("keydown", function (e) {
 mobileInputEl.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     let inputText = mobileInputEl.value;
-    output(">" + ` ${inputText}`);
+    output(`${root}` + ` ${inputText}`);
     handleCommand(inputText);
     mobileInputEl.value = "";
   }
