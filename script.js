@@ -2,7 +2,7 @@ const outputElement = document.getElementById("output");
 const inputElement = document.getElementById("input");
 const mobileOutputEl = document.getElementById("mobileOutput");
 const mobileInputEl = document.getElementById("mobileInput");
-const workingDirectory = document.getElementsByClassName("directory");
+const directoryEl = document.getElementsByClassName("directory");
 const directoryContents =
   document.getElementsByClassName("directory").innerHTML;
 const root = `C:\\`;
@@ -11,9 +11,14 @@ const credits = `${root}credits >`;
 const concept_art = `${root}concept_art >`;
 const contact = `${root}contact >`;
 
+// animation vars
 let txt = null;
 let i = 0;
 let speed = 35;
+
+// directory vars
+const directoriesArr = ["root", "info", "credits", "concept_art", "contact"];
+let currentDirectory = null;
 
 const animate = (text) => {
   if (i < txt.length) {
@@ -27,13 +32,19 @@ const animate = (text) => {
 displayWelcome();
 mobileWelcome();
 
-// Directory Command handler -- WRITE LOGIC TO CHECK DIRECTORY BEFORE EXECUTING A COMMAND
-function directoryHandler() {
+function directoryHandler(input) {
   const command = input.trim().toLowerCase();
   switch (command) {
+    case "help":
+      // Display available commands
+      displayCommands();
+      break;
+    case "clear":
+      // Clear the console
+      clearConsole();
+      break;
     case "info":
       // Display game synopsis
-
       output("");
       output(
         "Echoes of Despair is a retro styled survival horror game that demands strategic teamwork"
@@ -50,7 +61,6 @@ function directoryHandler() {
       break;
     case "credits":
       // Display game credits
-      // Added spaces between lines for "easier to read" text. Helpful when outputting large amounts of text. -- Moody
       output("");
       output("Director                : Justin Hymer");
       output("");
@@ -88,6 +98,18 @@ function directoryHandler() {
       // Collect and send an email
       collectEmailInfo();
       break;
+    // Directory Navigation
+    case "cd ..":
+      for (i = 0; i < directoryEl.length; i++) {
+        directoryEl[i].textContent = `${root}>`;
+      }
+      output("");
+      currentDirectory = directoriesArr[0];
+      break;
+    default:
+      // Invalid command
+      output("");
+      output("Invalid command. Type 'help' for available commands.");
   }
 }
 
@@ -111,39 +133,45 @@ function handleCommand(input) {
       txt = `Echoes of Despair is a retro styled survival horror game that demands strategic teamwork\nas players navigate a cursed mansion.\n\nWith each player controlling a unique character,\nyou collaborate and combine your distinct abilities to uncover the mansion's sinister past,\nconfront otherworldly threats, and break free from the cycle of terror.`;
       animate(txt);
       break;
-    // Users can naviagte directories. Console directory updates accordingly -- Moody
+    // Directory Navigation
     case "cd info":
-      for (i = 0; i < workingDirectory.length; i++) {
-        workingDirectory[i].textContent = `${info}`;
+      for (i = 0; i < directoryEl.length; i++) {
+        directoryEl[i].textContent = `${info}`;
       }
       output("");
       output("in the info directory");
+      currentDirectory = directoriesArr[1];
       break;
     case "cd credits":
-      for (i = 0; i < workingDirectory.length; i++) {
-        workingDirectory[i].textContent = `${credits}`;
+      for (i = 0; i < directoryEl.length; i++) {
+        directoryEl[i].textContent = `${credits}`;
       }
       output("");
       output("in the credits directory");
+      currentDirectory = directoriesArr[2];
       break;
     case "cd concept_art":
-      for (i = 0; i < workingDirectory.length; i++) {
-        workingDirectory[i].textContent = `${concept_art}`;
+      for (i = 0; i < directoryEl.length; i++) {
+        directoryEl[i].textContent = `${concept_art}`;
       }
       output("");
       output("in the concept_art directory");
+      currentDirectory = directoriesArr[3];
       break;
     case "cd contact":
-      for (i = 0; i < workingDirectory.length; i++) {
-        workingDirectory[i].textContent = `${contact}`;
+      for (i = 0; i < directoryEl.length; i++) {
+        directoryEl[i].textContent = `${contact}`;
       }
       output("");
       output("in the contact directory");
+      currentDirectory = directoriesArr[4];
       break;
     case "cd ..":
-      for (i = 0; i < workingDirectory.length; i++) {
-        workingDirectory[i].textContent = `${root}>`;
+      for (i = 0; i < directoryEl.length; i++) {
+        directoryEl[i].textContent = `${root}>`;
       }
+      output("");
+      currentDirectory = directoriesArr[0];
       break;
     default:
       // Invalid command
@@ -154,7 +182,6 @@ function handleCommand(input) {
 
 // Function to display output in the console
 function output(text) {
-  // console.log(text);
   outputElement.textContent += text + "\n";
   mobileOutputEl.textContent += text + "\n";
 }
@@ -173,32 +200,41 @@ function displayWelcome() {
     "Echoes of Despair terminal" +
     "\n" +
     "type 'help' for list of commands and directories";
+  currentDirectory = directoriesArr[0];
 }
 
-// added different welcome prompt for mobile to simplify the UX w/out losing interactive terminal
 function mobileWelcome() {
   mobileOutputEl.textContent +=
     "Echoes of Despair terminal" + "\n" + "type 'uname' for more information";
+  currentDirectory = directoriesArr[0];
 }
 
 // Function to display available commands
 function displayCommands() {
   output("\nAvailable Commands:");
-  // List your commands here
 
-  output("uname          : show system information");
-  output("ls             : show directory");
-  output("cd             : change directory");
-  output("pwd            : show the present directory");
-  output("help           : show commands");
-  output("{command} help : Shows help for a specific command");
-  output("clear          : clears the screen");
-  output("\n");
-  output("Available Directories:");
-  output("info\ncredits\nconcept_art\ncontact");
+  // only shows directory list when in "root"
+  if (currentDirectory !== "root") {
+    output("ls             : show directory");
+    output("cd             : change directory");
+    output("pwd            : show the present directory");
+    output("help           : show commands");
+    output("{command} help : Shows help for a specific command");
+    output("clear          : clears the screen");
+  } else {
+    output("uname          : show system information");
+    output("ls             : show directory");
+    output("cd             : change directory");
+    output("pwd            : show the present directory");
+    output("help           : show commands");
+    output("{command} help : Shows help for a specific command");
+    output("clear          : clears the screen");
+    output("\n");
+    output("Available Directories:");
+    output("info\ncredits\nconcept_art\ncontact");
+  }
 }
-
-// this sizing fits onto an iPhone SE (375px wide). -- Moody
+// Function to display title art
 function displayTitle() {
   output(" ____ ____ _   _ _____ ____ _____");
   output("|    |    | | | |     |    |     | ");
@@ -250,8 +286,32 @@ inputElement.addEventListener("keydown", function (e) {
 mobileInputEl.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     let inputText = mobileInputEl.value;
-    output(`${root}` + ` ${inputText}`);
-    handleCommand(inputText);
-    mobileInputEl.value = "";
+    output(` > ${inputText}`);
+
+    if (currentDirectory === "root") {
+      console.log(currentDirectory);
+      handleCommand(inputText);
+      mobileInputEl.value = "";
+    } else {
+      // harder limits on directory-specific commands, see `10.9.2023 EoD Notes` for example
+      console.log(currentDirectory);
+      directoryHandler(inputText);
+      mobileInputEl.value = "";
+    }
   }
 });
+
+// 10.9.2023 EoD Notes - Moody
+// ------------------------------------
+// Directory functionality Updates:
+// - "cd .." works in both root and subfolders
+// - commands are being limited to specific directories
+//  = example: "info" is invalid in root, but displays game info when in info directory
+//  = further limitation may be desirable
+//    - example: "credits" will run in ANY directory outside of root
+// - Available Directories only displays in root
+// ------------------------------------
+// To-Do:
+// - harder limits on directory-specific commands per above example with "credits" (function for each directory's commands?)
+// - program "pwd"
+// - program "ls"
