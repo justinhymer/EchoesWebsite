@@ -5,12 +5,6 @@ TODO:
 - program in {command} help screens for every specific command
   - For example, "cd help" or "help cd" would show how to use the cd command
 
------------------------------------------
-  ---NEXT UP---
-- code in functionality for "pwd" command
-- code in functionality for "ls" command
------------------------------------------
-
 - Directory Structure
     - Home
       - /info

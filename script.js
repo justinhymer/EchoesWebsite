@@ -33,83 +33,194 @@ displayWelcome();
 mobileWelcome();
 
 function directoryHandler(input) {
-  const command = input.trim().toLowerCase();
-  switch (command) {
-    case "help":
-      // Display available commands
-      displayCommands();
-      break;
-    case "clear":
-      // Clear the console
-      clearConsole();
-      break;
-    case "info":
-      // Display game synopsis
-      output("");
-      output(
-        "Echoes of Despair is a retro styled survival horror game that demands strategic teamwork"
-      );
-      output("as players navigate a cursed mansion.");
-      output("");
-      output("With each player controlling a unique character,");
-      output(
-        "you collaborate and combine your distinct abilities to uncover the mansion's sinister past,"
-      );
-      output(
-        "confront otherworldly threats, and break free from the cycle of terror."
-      );
-      break;
-    case "credits":
-      // Display game credits
-      output("");
-      output("Director                : Justin Hymer");
-      output("");
-      output("Lead Programm           : Justin Hymer");
-      output("");
-      output("3D Designer             : Justin Hymer");
-      output("");
-      output("Monster Voice Actor     : Justin Hymer");
-      output("");
-      output("Producer                : Jake Boerner");
-      output("");
-      output("Assistant Programmer    : Kyle Noll");
-      output("");
-      output("Website developer       : Andrew Moody");
-      output("");
-      output("Original music          : Trace Davidson");
-      output("");
-      output("Concept Art             : Brian Hymer");
-      output("");
-      output("Boss Voice Actor        : Brian Hymer");
-      output("");
-      output("Female Voice Actor      : Makayla Fowler");
-      output("");
-      output("Synthesizer Specialis   : Jack P");
-      output("");
-      output(
-        "Playtesters             : Makayla Fowler, Jack P, RJ Lorenz, Nick Lind, and Brandon Ellis"
-      );
-      break;
-    case "concept art":
-      // Display ASCII art
-      displayConceptArt();
-      break;
-    case "contact":
-      // Collect and send an email
-      collectEmailInfo();
-      break;
-    // Directory Navigation
-    case "cd ..":
-      for (i = 0; i < directoryEl.length; i++) {
-        directoryEl[i].textContent = `${root}>`;
-      }
-      output("");
-      currentDirectory = directoriesArr[0];
-      break;
-    default:
-      // Invalid command
-      output("");
-      output("Invalid command. Type 'help' for available commands.");
+  const command = input.trim();
+
+  if (currentDirectory === "info") {
+    switch (command) {
+      case "pwd":
+        // Displays working directory
+        pwdDisplay("info");
+        break;
+      case "ls":
+        // Displays files/folders in directory
+        lsDisplay("info");
+        break;
+      case "help":
+        // Display available commands
+        displayCommands("info");
+        break;
+      case "clear":
+        // Clear the console
+        clearConsole();
+        break;
+      case "gameInfo.txt":
+        // Display game synopsis
+        output("");
+        output(
+          "Echoes of Despair is a retro styled survival horror game that demands strategic teamwork"
+        );
+        output("as players navigate a cursed mansion.");
+        output("");
+        output("With each player controlling a unique character,");
+        output(
+          "you collaborate and combine your distinct abilities to uncover the mansion's sinister past,"
+        );
+        output(
+          "confront otherworldly threats, and break free from the cycle of terror."
+        );
+        break;
+      case "aboutTheCreator.txt":
+        // Display info about the man, the myth, the legend...Justin Hymer
+        output("");
+        output("Justin Hymer is a G...");
+        output("");
+        output("We'll replace this with the text he'd actually like here.");
+        break;
+      case "cd ..":
+        for (i = 0; i < directoryEl.length; i++) {
+          directoryEl[i].textContent = `${root}>`;
+        }
+        output("");
+        currentDirectory = directoriesArr[0];
+        break;
+      default:
+        // Invalid command
+        output("");
+        output("Invalid command. Type 'help' for available commands.");
+    }
+  } else if (currentDirectory === "credits") {
+    switch (command) {
+      case "pwd":
+        // Displays working directory
+        pwdDisplay("credits");
+        break;
+      case "ls":
+        // Displays files/folders in directory
+        lsDisplay("credits");
+        break;
+      case "help":
+        // Display available commands
+        displayCommands("credits");
+        break;
+      case "clear":
+        // Clear the console
+        clearConsole();
+        break;
+      case "credits.txt":
+        // Display game credits
+        output("");
+        output("Director                : Justin Hymer");
+        output("");
+        output("Lead Programm           : Justin Hymer");
+        output("");
+        output("3D Designer             : Justin Hymer");
+        output("");
+        output("Monster Voice Actor     : Justin Hymer");
+        output("");
+        output("Producer                : Jake Boerner");
+        output("");
+        output("Assistant Programmer    : Kyle Noll");
+        output("");
+        output("Website developer       : Andrew Moody");
+        output("");
+        output("Original music          : Trace Davidson");
+        output("");
+        output("Concept Art             : Brian Hymer");
+        output("");
+        output("Boss Voice Actor        : Brian Hymer");
+        output("");
+        output("Female Voice Actor      : Makayla Fowler");
+        output("");
+        output("Synthesizer Specialis   : Jack P");
+        output("");
+        output(
+          "Playtesters             : Makayla Fowler, Jack P, RJ Lorenz, Nick Lind, and Brandon Ellis"
+        );
+        break;
+      case "cd ..":
+        for (i = 0; i < directoryEl.length; i++) {
+          directoryEl[i].textContent = `${root}>`;
+        }
+        output("");
+        currentDirectory = directoriesArr[0];
+        break;
+      default:
+        // Invalid command
+        output("");
+        output("Invalid command. Type 'help' for available commands.");
+    }
+  } else if (currentDirectory === "concept_art") {
+    switch (command) {
+      case "pwd":
+        // Displays working directory
+        pwdDisplay("concept_art");
+        break;
+      case "ls":
+        // Displays files/folders in directory
+        lsDisplay("concept_art");
+        break;
+      case "help":
+        // Display available commands
+        displayCommands("concept_art");
+        break;
+      case "clear":
+        // Clear the console
+        clearConsole();
+        break;
+      case "theMansion.png":
+        // Display ASCII art
+        displayConceptArt();
+        break;
+      case "cd ..":
+        for (i = 0; i < directoryEl.length; i++) {
+          directoryEl[i].textContent = `${root}>`;
+        }
+        output("");
+        currentDirectory = directoriesArr[0];
+        break;
+      default:
+        // Invalid command
+        output("");
+        output("Invalid command. Type 'help' for available commands.");
+    }
+  } else if (currentDirectory === "contact") {
+    switch (command) {
+      case "pwd":
+        // Displays working directory
+        pwdDisplay("contact");
+        break;
+      case "ls":
+        // Displays files/folders in directory
+        lsDisplay("contact");
+        break;
+      case "help":
+        // Display available commands
+        displayCommands("contact");
+        break;
+      case "clear":
+        // Clear the console
+        clearConsole();
+        break;
+      case "sendEmail.exe":
+        // Collect and send an email
+        collectEmailInfo();
+        break;
+      case "contactInfo.txt":
+        // Collect and send an email
+        displayContactInfo();
+        break;
+      case "cd ..":
+        for (i = 0; i < directoryEl.length; i++) {
+          directoryEl[i].textContent = `${root}>`;
+        }
+        output("");
+        currentDirectory = directoriesArr[0];
+        break;
+      default:
+        // Invalid command
+        output("");
+        output("Invalid command. Type 'help' for available commands.");
+    }
   }
 }
 
@@ -117,9 +228,17 @@ function directoryHandler(input) {
 function handleCommand(input) {
   const command = input.trim().toLowerCase();
   switch (command) {
+    case "pwd":
+      // Displays working directory
+      pwdDisplay("root");
+      break;
+    case "ls":
+      // Displays files/folders in directory
+      lsDisplay("root");
+      break;
     case "help":
       // Display available commands
-      displayCommands();
+      displayCommands("root");
       break;
     case "clear":
       // Clear the console
@@ -210,18 +329,43 @@ function mobileWelcome() {
 }
 
 // Function to display available commands
-function displayCommands() {
+function displayCommands(dir) {
   output("\nAvailable Commands:");
 
-  // only shows directory list when in "root"
-  if (currentDirectory !== "root") {
+  // only shows directory-appropriate commands
+  if (dir === "info") {
     output("ls             : show directory");
     output("cd             : change directory");
     output("pwd            : show the present directory");
     output("help           : show commands");
+    output("info           : show synopsis");
     output("{command} help : Shows help for a specific command");
     output("clear          : clears the screen");
-  } else {
+  } else if (dir === "credits") {
+    output("ls             : show directory");
+    output("cd             : change directory");
+    output("pwd            : show the present directory");
+    output("help           : show commands");
+    output("credits        : show game credits");
+    output("{command} help : Shows help for a specific command");
+    output("clear          : clears the screen");
+  } else if (dir === "concept_art") {
+    output("ls             : show directory");
+    output("cd             : change directory");
+    output("pwd            : show the present directory");
+    output("help           : show commands");
+    output("concept art    : display concept art");
+    output("{command} help : Shows help for a specific command");
+    output("clear          : clears the screen");
+  } else if (dir === "contact") {
+    output("ls             : show directory");
+    output("cd             : change directory");
+    output("pwd            : show the present directory");
+    output("help           : show commands");
+    output("contact        : send an email");
+    output("{command} help : Shows help for a specific command");
+    output("clear          : clears the screen");
+  } else if (dir === "root") {
     output("uname          : show system information");
     output("ls             : show directory");
     output("cd             : change directory");
@@ -234,6 +378,47 @@ function displayCommands() {
     output("info\ncredits\nconcept_art\ncontact");
   }
 }
+
+// Function to list files within directory
+const lsDisplay = (dir) => {
+  if (dir === "info") {
+    output("\n");
+    output("gameInfo.txt\naboutTheCreator.txt");
+  } else if (dir === "credits") {
+    output("\n");
+    output("credits.txt");
+  } else if (dir === "concept_art") {
+    output("\n");
+    output("theMansion.png");
+  } else if (dir === "contact") {
+    output("\n");
+    output("sendEmail.exe\ncontactInfo.txt");
+  } else if (dir === "root") {
+    output("\n");
+    output("\\info\n\\credits\n\\concept_art\n\\contact");
+  }
+};
+
+// Function to print working directory
+const pwdDisplay = (dir) => {
+  if (dir === "info") {
+    output("\n");
+    output(`${info}`);
+  } else if (dir === "credits") {
+    output("\n");
+    output(`${credits}`);
+  } else if (dir === "concept_art") {
+    output("\n");
+    output(`${concept_art}`);
+  } else if (dir === "contact") {
+    output("\n");
+    output(`${contact}`);
+  } else if (dir === "root") {
+    output("\n");
+    output(`${root}`);
+  }
+};
+
 // Function to display title art
 function displayTitle() {
   output(" ____ ____ _   _ _____ ____ _____");
@@ -265,6 +450,11 @@ function displayTitle() {
 function collectEmailInfo() {
   // Implement email collection logic here
 }
+
+const displayContactInfo = () => {
+  // Implement contact info display collection logic here
+}
+
 
 // Function to display concept art (modify as needed)
 function displayConceptArt() {
@@ -301,17 +491,15 @@ mobileInputEl.addEventListener("keydown", function (e) {
   }
 });
 
-// 10.9.2023 EoD Notes - Moody
-// ------------------------------------
-// Directory functionality Updates:
-// - "cd .." works in both root and subfolders
-// - commands are being limited to specific directories
-//  = example: "info" is invalid in root, but displays game info when in info directory
-//  = further limitation may be desirable
-//    - example: "credits" will run in ANY directory outside of root
-// - Available Directories only displays in root
-// ------------------------------------
-// To-Do:
-// - harder limits on directory-specific commands per above example with "credits" (function for each directory's commands?)
-// - program "pwd"
-// - program "ls"
+// 10.10 EoD Notes:
+// -------------------------
+// - "pwd" & "ls" now work as expected
+// - commands are now isolated to the correct directories
+// - updated commands to reflect file names listed in README.md
+// - turned off toLowerCase in directoryHandler() so file names would trigger properly
+// -------------------------
+// TO-DO:
+// -------------------------
+// - build displayContactInfo() function
+// - add contact info to credits for aboutTheCreator.txt
+// -------------------------
