@@ -19,9 +19,9 @@ TODO:
           - Justin Hymer
           - justinhymer1@gmail.com
           - Bloomington IL
-        - [ ] sendEmail.exe
+        - [ ] sendEmail.exe -- IN PROGRESS
           - Gathers form data and submits an email
-        
+    
 - [ ] contactInfo.txt
           - Displays contact info text
           - Justin Hymer
